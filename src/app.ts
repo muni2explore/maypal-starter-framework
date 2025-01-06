@@ -5,18 +5,17 @@ import helmet from 'helmet';
 import routes from './routes';
 import { errorHandler } from './middlewares/errorHandler';
 import { AppDataSource } from './config/database';
-import './config/container'; // Import container configuration
 
 const app = express();
 
 // Initialize TypeORM connection
 AppDataSource.initialize()
-  .then(() => {
-    console.log("Data Source has been initialized!");
-  })
-  .catch((err) => {
-    console.error("Error during Data Source initialization:", err);
-  });
+    .then(() => {
+        console.log("Data Source has been initialized!");
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err);
+    });
 
 // Middlewares
 app.use(cors());

@@ -1,14 +1,15 @@
 import { injectable, inject } from 'tsyringe';
 import { Request, Response } from 'express';
 import { IUserService } from '../services/interfaces/IUserService';
+import { TYPES } from '../di/types';
 import { AppError } from '../middlewares/errorHandler';
 
 @injectable()
 export class UserController {
-  constructor(
-    @inject('UserService')
-    private userService: IUserService
-  ) {}
+    constructor(
+        @inject(TYPES.UserService)
+        private userService: IUserService
+    ) {}
 
   createUser = async (req: Request, res: Response): Promise<void> => {
     try {

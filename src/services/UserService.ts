@@ -2,13 +2,14 @@ import { injectable, inject } from 'tsyringe';
 import { IUserService, CreateUserDTO, UpdateUserDTO } from './interfaces/IUserService';
 import { IUserRepository } from '../repositories/interfaces/IUserRepository';
 import { User } from '../entities/User';
+import { TYPES } from '../di/types';
 
 @injectable()
 export class UserService implements IUserService {
-  constructor(
-    @inject('UserRepository')
-    private userRepository: IUserRepository
-  ) {}
+    constructor(
+        @inject(TYPES.UserRepository)
+        private userRepository: IUserRepository
+    ) {}
 
   async createUser(data: CreateUserDTO): Promise<User> {
     const existingUser = await this.userRepository.findByEmail(data.email);

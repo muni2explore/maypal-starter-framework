@@ -12,12 +12,13 @@ export class UserRepository implements IUserRepository {
     this.repository = AppDataSource.getRepository(User);
   }
 
-  async findById(id: number): Promise<User | null> {
-    return this.repository.findOneBy({ id });
+  async findByUserId(userid: string): Promise<User | null> {
+    return this.repository.findOneBy({ userid });
   }
 
-  async findByEmail(email: string): Promise<User | null> {
-    return this.repository.findOneBy({ email });
+
+  async findByPhoneNumber(phoneNumber: string): Promise<User | null> {
+    return this.repository.findOneBy({ phoneNumber });
   }
 
   async create(user: Partial<User>): Promise<User> {
@@ -25,14 +26,14 @@ export class UserRepository implements IUserRepository {
     return this.repository.save(newUser);
   }
 
-  async update(id: number, user: Partial<User>): Promise<User> {
-    await this.repository.update(id, user);
-    const updatedUser = await this.findById(id);
+  async update(userid: string, user: Partial<User>): Promise<User> {
+    await this.repository.update(userid, user);
+    const updatedUser = await this.findByUserId(userid);
     if (!updatedUser) throw new Error('User not found');
     return updatedUser;
   }
 
-  async delete(id: number): Promise<void> {
-    await this.repository.delete(id);
+  async delete(userid: string): Promise<void> {
+    await this.repository.delete(userid);
   }
 }

@@ -12,34 +12,43 @@ export class UserService implements IUserService {
     ) {}
 
   async createUser(data: CreateUserDTO): Promise<User> {
-    const existingUser = await this.userRepository.findByEmail(data.email);
-    if (existingUser) {
-      throw new Error('User with this email already exists');
+    const existingPhoneNumberUser = await this.userRepository.findByPhoneNumber(data.phoneNumber);
+    if (existingPhoneNumberUser) {
+      throw new Error('User with this Mobile Number already exists');
     }
     return this.userRepository.create(data);
   }
 
-  async updateUser(id: number, data: UpdateUserDTO): Promise<User> {
-    const user = await this.userRepository.findById(id);
+  async updateUser(userid: string, data: UpdateUserDTO): Promise<User> {
+    const user = await this.userRepository.findByUserId(userid);
     if (!user) {
       throw new Error('User not found');
     }
-    return this.userRepository.update(id, data);
+    return this.userRepository.update(userid, data);
   }
 
-  async getUserById(id: number): Promise<User> {
-    const user = await this.userRepository.findById(id);
+  async getUserByUserId(userid: string): Promise<User> {
+    const user = await this.userRepository.findByUserId(userid);
     if (!user) {
       throw new Error('User not found');
     }
     return user;
   }
 
-  async deleteUser(id: number): Promise<void> {
-    const user = await this.userRepository.findById(id);
+
+  async getUserByPhoneNumber(phoneNumber: string): Promise<User> {
+    const user = await this.userRepository.findByPhoneNumber(phoneNumber);
     if (!user) {
       throw new Error('User not found');
     }
-    await this.userRepository.delete(id);
+    return user;
+  }
+
+  async deleteUser(userid: string): Promise<void> {
+    const user = await this.userRepository.findByUserId(userid);
+    if (!user) {
+      throw new Error('User not found');
+    }
+    await this.userRepository.delete(userid);
   }
 }

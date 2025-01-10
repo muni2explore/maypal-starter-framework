@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 import { IUserService } from '../services/interfaces/IUserService';
 import { TYPES } from '../di/types';
 import { AppError } from '../middlewares/errorHandler';
+import { generateToken } from '../utils/jwt';
 
 @injectable()
 export class UserController {
@@ -26,7 +27,7 @@ export class UserController {
 
   updateUser = async (req: Request, res: Response): Promise<void> => {
     try {
-      const user = await this.userService.updateUser(Number(req.params.id), req.body);
+      const user = await this.userService.updateUser((req.params.id), req.body);
       res.json(user);
     } catch (error: any) {
       if (error instanceof AppError) {
@@ -39,7 +40,7 @@ export class UserController {
 
   getUser = async (req: Request, res: Response): Promise<void> => {
     try {
-      const user = await this.userService.getUserById(Number(req.params.id));
+      const user = await this.userService.getUserByUserId(req.params.id);
       res.json(user);
     } catch (error: any) {
       if (error instanceof AppError) {
@@ -52,13 +53,29 @@ export class UserController {
 
   deleteUser = async (req: Request, res: Response): Promise<void> => {
     try {
-      await this.userService.deleteUser(Number(req.params.id));
-      res.status(204).send();
+      await this.userService.deleteUser(req.params.id);
+      res.status(200).json({ message: 'User deleted successfully' });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
         res.status(404).json({ message: error.message || 'User not found' });
+      }
+    }
+  };
+  loginUser = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const { phoneNumber } = req.body;
+      const user = await this.userService.getUserByPhoneNumber(phoneNumber);
+
+      const token = generateToken(user.userid);  
+
+      res.status(200).json({ message: 'Login successful', token }); 
+    } catch (error: any) {
+      if (error instanceof AppError) {
+        res.status(error.statusCode).json({ message: error.message });
+      } else {
+        res.status(500).json({ message: 'Error logging in' });
       }
     }
   };

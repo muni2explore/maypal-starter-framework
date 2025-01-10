@@ -1,9 +1,9 @@
 import { User } from '../../entities/User';
 
 export interface IUserRepository {
-  findById(id: number): Promise<User | null>;
-  findByEmail(email: string): Promise<User | null>;
+  findByUserId(userid: string): Promise<User | null>;
+  findByPhoneNumber(phoneNumber: string): Promise<User | null>;
   create(user: Partial<User>): Promise<User>;
-  update(id: number, user: Partial<User>): Promise<User>;
-  delete(id: number): Promise<void>;
+  update(userid: string, user: Partial<User>): Promise<User>;
+  delete(userid: string): Promise<void>;
 }

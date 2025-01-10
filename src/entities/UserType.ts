@@ -1,20 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn('uuid')
-  userid!: string;
+export class UserType {
+  @PrimaryGeneratedColumn()
+  integer!: number;
 
   @Column()
-  countryCode!: number;
-
-  @Column({ unique: true })
-  phoneNumber!: string;
+  type!: string;
 
   @CreateDateColumn()
   createdAt!: Date;
 
   @UpdateDateColumn()
   updatedAt!: Date;
-
 }

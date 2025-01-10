@@ -4,5 +4,8 @@ export const TYPES = {
     UserController: Symbol('UserController'),
     UserTypeService: Symbol('UserTypeService'),
     UserTypeRepository: Symbol('UserTypeRepository'),
-    UserTypeController: Symbol('UserTypeController')
+    UserTypeController: Symbol('UserTypeController'),
+    UserProfileService: Symbol('UserProfileService'),
+    UserProfileRepository: Symbol('UserProfileRepository'),
+    UserProfileController: Symbol('UserProfileController')
 };

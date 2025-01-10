@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import userRoutes from './userRoutes';
 import userTypeRoutes from './userTypeRoutes';
+import userProfileRoutes from './userProfileRoutes';
 import { logger } from '../utils/logger';
 
 const router = Router();
@@ -16,7 +17,7 @@ const API_PREFIX = '/api/v1';
 // Register routes
 router.use(`${API_PREFIX}/users`, userRoutes);
 router.use(`${API_PREFIX}/usertypes`, userTypeRoutes);
-
+router.use(`${API_PREFIX}/profile`, userProfileRoutes);
 // 404 handler for undefined routes
 router.use('*', (req, res) => {
   logger.warn(`Route not found: ${req.originalUrl}`);

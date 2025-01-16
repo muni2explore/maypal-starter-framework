@@ -14,8 +14,9 @@ import { IUserTypeRepository } from '../repositories/interfaces/IUserTypeReposit
 import { UserProfileController } from '../controllers/UserProfileController';
 import { UserProfileService } from '../services/UserProfileService';
 import { UserProfileRepository } from '../repositories/UserProfileRepository';
-import { IUserProfileService } from '../services/interfaces/IUserProfileService';
-import { IUserProfileRepository } from '../repositories/interfaces/IUserProfileRepository';
+import { UserPinController } from '../controllers/UserPinController';
+import { UserPinService } from '../services/UserPinService';
+import { UserPinRepository } from '../repositories/UserPinRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -52,6 +53,18 @@ container.register(TYPES.UserProfileService, {
 
 container.register(TYPES.UserProfileController, {
     useClass: UserProfileController
+});
+
+container.register(TYPES.UserPinRepository, {
+    useClass: UserPinRepository
+});
+
+container.register(TYPES.UserPinService, {
+    useClass: UserPinService
+});
+
+container.register(TYPES.UserPinController, {
+    useClass: UserPinController
 });
 
 export { container };

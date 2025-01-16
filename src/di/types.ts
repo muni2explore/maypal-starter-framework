@@ -7,5 +7,8 @@ export const TYPES = {
     UserTypeController: Symbol('UserTypeController'),
     UserProfileService: Symbol('UserProfileService'),
     UserProfileRepository: Symbol('UserProfileRepository'),
-    UserProfileController: Symbol('UserProfileController')
+    UserProfileController: Symbol('UserProfileController'),
+    UserPinService: Symbol('UserPinService'),
+    UserPinRepository: Symbol('UserPinRepository'),
+    UserPinController: Symbol('UserPinController'),
 };

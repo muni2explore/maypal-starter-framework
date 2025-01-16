@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, } from 'class-validator';
+import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, IsDate } from 'class-validator';
 
 export class CreateUserSchema {
   @IsNumber()
@@ -61,9 +61,6 @@ export class CreateUserProfileSchema {
 }
 
 export class UpdateUserProfileSchema {
-  @IsOptional()
-  @IsUUID()
-  userid?: string;
 
   @IsOptional()
   @IsNumber()
@@ -100,6 +97,28 @@ export class LoginUserProfileSchema {
 
   @IsString()
   password!: string;
+}
+
+export class CreateUserPinSchema {
+  @IsUUID()
+  userid!: string;
+
+  @IsString()
+  pin!: string;
+  
+  @IsString()
+  expireAt?: string; 
+}
+
+export class UpdateUserPinSchema {
+
+  @IsOptional()
+  @IsString()
+  pin?: string;
+
+  @IsOptional()
+  @IsString()
+  expireAt?: string;
 }
 
 export interface ValidationErrorDetail {

@@ -23,6 +23,12 @@ import { UserPinHistoryRepository } from '../repositories/UserPinHistoryReposito
 import { VerificationCodeController } from '../controllers/VerificationCodeController';
 import { VerificationCodeService } from '../services/VerificationCodeService';
 import { VerificationCodeRepository } from '../repositories/VerificationCodeRepository';
+import { ContactUsController } from '../controllers/ContactUsController';
+import { ContactUsService } from '../services/ContactUsService';
+import { ContactUsRepository } from '../repositories/ContactUsRepository';
+import { StickerTypeController } from '../controllers/StickerTypeController';
+import { StickerTypeService } from '../services/StickerTypeService';
+import { StickerTypeRepository } from '../repositories/StickerTypeRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -95,6 +101,30 @@ container.register(TYPES.VerificationCodeService, {
 
 container.register(TYPES.VerificationCodeController, {
     useClass: VerificationCodeController
+});
+
+container.register(TYPES.ContactUsRepository, {
+    useClass: ContactUsRepository
+});
+
+container.register(TYPES.ContactUsService, {
+    useClass: ContactUsService
+});
+
+container.register(TYPES.ContactUsController, {
+    useClass: ContactUsController
+});
+
+container.register(TYPES.StickerTypeRepository, {
+    useClass: StickerTypeRepository
+});
+
+container.register(TYPES.StickerTypeService, {
+    useClass: StickerTypeService
+});
+
+container.register(TYPES.StickerTypeController, {
+    useClass: StickerTypeController
 });
 
 export { container };

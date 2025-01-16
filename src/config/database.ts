@@ -5,6 +5,8 @@ import { UserProfile } from "../entities/UserProfile";
 import { UserPin } from "../entities/UserPin";
 import { UserPinHistory } from "../entities/UserPinHistory";
 import { VerificationCode } from "../entities/VerificationCode";
+import { ContactUs } from "../entities/ContactUs";
+import { StickerType } from "../entities/StickerType";
 import { config } from "./environment";
 
 export const AppDataSource = new DataSource({
@@ -16,7 +18,7 @@ export const AppDataSource = new DataSource({
   database: config.database.name,
   synchronize: false,
   logging: config.database.logging,
-  entities: [User, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode],
+  entities: [User, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode ,ContactUs, StickerType],
   migrations: ["src/migrations/*.ts"],
   subscribers: [],
 });

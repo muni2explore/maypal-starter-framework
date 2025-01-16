@@ -175,6 +175,59 @@ export class UpdateVerificationCodeSchema {
   active?: boolean;
 
 }
+export class CreateContactUsSchema {
+
+  @IsMobilePhone() 
+  phoneNumber!: string;
+
+  @IsEmail() 
+  emailAddress!: string;
+
+  @IsString()
+  subject!: string;
+
+  @IsString()
+  message!: string;
+
+  @IsOptional() 
+  @IsUUID() 
+  userid?: string;
+
+}
+
+export class UpdateContactUsSchema {
+
+  @IsOptional()
+  @IsMobilePhone() 
+  phoneNumber?: string;
+
+  @IsOptional()
+  @IsEmail()
+  emailAddress?: string;
+
+  @IsOptional()
+  @IsString()
+  subject?: string;
+
+  @IsOptional()
+  @IsString()
+  message?: string;
+
+  @IsOptional()
+  @IsUUID() 
+  userid?: string;
+}
+
+export class CreateStickerTypeSchema {
+  @IsString()
+  type!: string; 
+}
+
+export class UpdateStickerTypeSchema {
+  @IsOptional()
+  @IsString()
+  type!: string; 
+}
 
 export interface ValidationErrorDetail {
     property: string;

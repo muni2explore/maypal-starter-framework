@@ -22,7 +22,7 @@ export class UserProfileService implements IUserProfileService {
   async updateUserProfile(id: string, data: UpdateUserProfileDTO): Promise<UserProfile> {
     const user = await this.userProfileRepository.findById(id);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('UserProfile not found');
     }
     return this.userProfileRepository.update(id, data);
   }
@@ -30,7 +30,7 @@ export class UserProfileService implements IUserProfileService {
   async getUserProfileById(id: string): Promise<UserProfile> {
     const user = await this.userProfileRepository.findById(id);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('UserProfile not found');
     }
     return user;
   }
@@ -39,7 +39,7 @@ export class UserProfileService implements IUserProfileService {
   async getUserProfileByEmailAddess(emailAddress: string): Promise<UserProfile> {
     const userProfile = await this.userProfileRepository.findByEmailAddress(emailAddress);
     if (!userProfile) {
-      throw new Error('User not found');
+      throw new Error('UserProfile not found');
     }
     return userProfile;
   }

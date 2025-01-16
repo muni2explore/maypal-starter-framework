@@ -17,4 +17,10 @@ export const TYPES = {
     VerificationCodeService: Symbol('VerificationCodeService'),
     VerificationCodeRepository: Symbol('VerificationCodeRepository'),
     VerificationCodeController: Symbol('VerificationCodeController'),
+    ContactUsService: Symbol('ContactUsService'),
+    ContactUsRepository: Symbol('ContactUsRepository'),
+    ContactUsController: Symbol('ContactUsController'),
+    StickerTypeService: Symbol('StickerTypeService'),
+    StickerTypeRepository: Symbol('StickerTypeRepository'),
+    StickerTypeController: Symbol('StickerTypeController'),
 };

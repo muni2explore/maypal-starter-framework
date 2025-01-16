@@ -17,6 +17,12 @@ import { UserProfileRepository } from '../repositories/UserProfileRepository';
 import { UserPinController } from '../controllers/UserPinController';
 import { UserPinService } from '../services/UserPinService';
 import { UserPinRepository } from '../repositories/UserPinRepository';
+import { UserPinHistoryController } from '../controllers/UserPinHistoryController';
+import { UserPinHistoryService } from '../services/UserPinHistoryService';
+import { UserPinHistoryRepository } from '../repositories/UserPinHistoryRepository';
+import { VerificationCodeController } from '../controllers/VerificationCodeController';
+import { VerificationCodeService } from '../services/VerificationCodeService';
+import { VerificationCodeRepository } from '../repositories/VerificationCodeRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -65,6 +71,30 @@ container.register(TYPES.UserPinService, {
 
 container.register(TYPES.UserPinController, {
     useClass: UserPinController
+});
+
+container.register(TYPES.UserPinHistoryRepository, {
+    useClass: UserPinHistoryRepository
+});
+
+container.register(TYPES.UserPinHistoryService, {
+    useClass: UserPinHistoryService
+});
+
+container.register(TYPES.UserPinHistoryController, {
+    useClass: UserPinHistoryController
+});
+
+container.register(TYPES.VerificationCodeRepository, {
+    useClass: VerificationCodeRepository
+});
+
+container.register(TYPES.VerificationCodeService, {
+    useClass: VerificationCodeService
+});
+
+container.register(TYPES.VerificationCodeController, {
+    useClass: VerificationCodeController
 });
 
 export { container };

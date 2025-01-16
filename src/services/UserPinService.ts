@@ -14,7 +14,7 @@ export class UserPinService implements IUserPinService {
   async createUserPin(data: CreateUserPinDTO): Promise<UserPin> {
     const existingPin = await this.userPinRepository.findByPin(data.pin);
     if (existingPin) {
-      throw new Error('UserPin with this EmailAdrress already exists');
+      throw new Error('UserPin with this Pin already exists');
     }
     return this.userPinRepository.create(data);
   }
@@ -22,7 +22,7 @@ export class UserPinService implements IUserPinService {
   async updateUserPin(id: string, data: UpdateUserPinDTO): Promise<UserPin> {
     const user = await this.userPinRepository.findById(id);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('UserPin not found');
     }
     return this.userPinRepository.update(id, data);
   }
@@ -30,7 +30,7 @@ export class UserPinService implements IUserPinService {
   async getUserPinById(id: string): Promise<UserPin> {
     const user = await this.userPinRepository.findById(id);
     if (!user) {
-      throw new Error('User not found');
+      throw new Error('UserPin not found');
     }
     return user;
   }
@@ -39,7 +39,7 @@ export class UserPinService implements IUserPinService {
   async getUserPinByPin(pin: string): Promise<UserPin> {
     const userPin = await this.userPinRepository.findByPin(pin);
     if (!userPin) {
-      throw new Error('User not found');
+      throw new Error('UserPin not found');
     }
     return userPin;
   }

@@ -11,4 +11,10 @@ export const TYPES = {
     UserPinService: Symbol('UserPinService'),
     UserPinRepository: Symbol('UserPinRepository'),
     UserPinController: Symbol('UserPinController'),
+    UserPinHistoryService: Symbol('UserPinHistoryService'),
+    UserPinHistoryRepository: Symbol('UserPinHistoryRepository'),
+    UserPinHistoryController: Symbol('UserPinHistoryController'),
+    VerificationCodeService: Symbol('VerificationCodeService'),
+    VerificationCodeRepository: Symbol('VerificationCodeRepository'),
+    VerificationCodeController: Symbol('VerificationCodeController'),
 };

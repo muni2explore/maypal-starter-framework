@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, IsDate } from 'class-validator';
+import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, IsBoolean } from 'class-validator';
 
 export class CreateUserSchema {
   @IsNumber()
@@ -119,6 +119,61 @@ export class UpdateUserPinSchema {
   @IsOptional()
   @IsString()
   expireAt?: string;
+}
+export class CreateUserPinHistorySchema {
+  @IsUUID()
+  userid!: string;
+
+  @IsString()
+  userPinId?: string; 
+
+  @IsString()
+  pin!: string;
+  
+}
+
+export class UpdateUserPinHistorySchema {
+
+  @IsOptional()
+  @IsString()
+  pin?: string;
+
+}
+
+export class CreateVerificationCodeSchema {
+
+  @IsString()
+  phoneNumber!: string;  
+  
+  @IsString()
+  code!: string;  
+
+  @IsNumber()
+  validFor!: number; 
+
+  @IsBoolean()
+  active!: boolean;
+
+}
+
+export class UpdateVerificationCodeSchema {
+
+  @IsOptional()
+  @IsString()
+  phoneNumber?: string;
+
+  @IsOptional()
+  @IsString()
+  code?: string;
+
+  @IsOptional()
+  @IsNumber()
+  validFor?: number;
+
+  @IsOptional()
+  @IsBoolean()
+  active?: boolean;
+
 }
 
 export interface ValidationErrorDetail {

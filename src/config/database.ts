@@ -19,14 +19,14 @@ import { StickerUser } from "../entities/StickerUser";
 import { StickerScheduleTemplate } from "../entities/StickerScheduleTemplate";
 import { StickerSchedule } from "../entities/StickerSchedule";
 import { MapPalCall } from "../entities/MapPalCall";
-import { MapPalVideoCall } from "@/entities/MapPalVideoCall";
-import { MapPalMessage } from "@/entities/MapPalMessage";
-import { Faq } from "@/entities/Faq";
-import { TermType } from "@/entities/TermType";
-import { Term } from "@/entities/Term";
-import { Feedback } from "@/entities/Feedback";
-import { Licence } from "@/entities/Licence";
-import { UserLicence } from "@/entities/UserLicence";
+import { MapPalVideoCall } from "../entities/MapPalVideoCall";
+import { MapPalMessage } from "../entities/MapPalMessage";
+import { Faq } from "../entities/Faq";
+import { TermType } from "../entities/TermType";
+import { Term } from "../entities/Term";
+import { Feedback } from "../entities/Feedback";
+import { Licence } from "../entities/Licence";
+import { UserLicence } from "../entities/UserLicence";
 
 import { config } from "./environment";
 

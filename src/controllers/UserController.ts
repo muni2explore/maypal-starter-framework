@@ -15,12 +15,16 @@ export class UserController {
   createUser = async (req: Request, res: Response): Promise<void> => {
     try {
       const user = await this.userService.createUser(req.body);
-      res.status(201).json(user);
+      res.status(201).json({
+        status: 'success',
+        message: 'User created successfully',
+        data: user,
+      });
     } catch (error: any) { // Type error as 'any' to access message
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(400).json({ message: error.message || 'Error creating user' });
+        res.status(400).json({ status: 'fail', message: error.message || 'Error creating user' });
       }
     }
   };
@@ -28,12 +32,16 @@ export class UserController {
   updateUser = async (req: Request, res: Response): Promise<void> => {
     try {
       const user = await this.userService.updateUser((req.params.id), req.body);
-      res.json(user);
+      res.status(200).json({
+        status: 'success',
+        message: 'User Updated successfully',
+        data: user,
+      });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ message: error.message || 'User not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User not found' });
       }
     }
   };
@@ -41,12 +49,16 @@ export class UserController {
   getUser = async (req: Request, res: Response): Promise<void> => {
     try {
       const user = await this.userService.getUserByUserId(req.params.id);
-      res.json(user);
+      res.status(200).json({
+        status: 'success',
+        message: 'User fetched successfully',
+        data: user,
+      });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ message: error.message || 'User not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User not found' });
       }
     }
   };
@@ -54,12 +66,12 @@ export class UserController {
   deleteUser = async (req: Request, res: Response): Promise<void> => {
     try {
       await this.userService.deleteUser(req.params.id);
-      res.status(200).json({ message: 'User deleted successfully' });
+      res.status(200).json({ status: 'success', message: 'User deleted successfully' });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ message: error.message || 'User not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User not found' });
       }
     }
   };
@@ -70,12 +82,12 @@ export class UserController {
 
       const token = generateToken(user.userid);  
 
-      res.status(200).json({ message: 'Login successful', token }); 
+      res.status(200).json({ status: 'success', message: 'Login successful', data: token }); 
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(500).json({ message: 'Error logging in' });
+        res.status(500).json({ status: 'fail',message: 'Error logging in' });
       }
     }
   };

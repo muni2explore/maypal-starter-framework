@@ -1,6 +1,12 @@
 import { Router } from 'express';
 import userRoutes from './userRoutes';
 import userTypeRoutes from './userTypeRoutes';
+import userProfileRoutes from './userProfileRoutes';
+import userPinRoutes from './userPinRoutes';
+import userPinHistoryRoutes from './userPinHistoryRoutes';
+import verificationCodeRoutes from './verificationCodeRoutes';
+import contactUsRoutes from './contactUsRoutes';
+import stickerTypeRoutes from './stickerTypeRoutes';
 import { logger } from '../utils/logger';
 
 const router = Router();
@@ -15,7 +21,13 @@ const API_PREFIX = '/api/v1';
 
 // Register routes
 router.use(`${API_PREFIX}/users`, userRoutes);
-router.use(`${API_PREFIX}/usertypes`, userTypeRoutes);
+router.use(`${API_PREFIX}/userTypes`, userTypeRoutes);
+router.use(`${API_PREFIX}/userProfile`, userProfileRoutes);
+router.use(`${API_PREFIX}/userPin`, userPinRoutes);
+router.use(`${API_PREFIX}/userPinHistory`, userPinHistoryRoutes);
+router.use(`${API_PREFIX}/verificationCode`, verificationCodeRoutes);
+router.use(`${API_PREFIX}/contactUs`, contactUsRoutes);
+router.use(`${API_PREFIX}/stickerType`, stickerTypeRoutes);
 
 // 404 handler for undefined routes
 router.use('*', (req, res) => {

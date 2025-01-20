@@ -27,5 +27,6 @@ export interface IUserProfileService {
   updateUserProfile(id: string, data: UpdateUserProfileDTO): Promise<UserProfile>;
   getUserProfileById(id: string): Promise<UserProfile>;
   getUserProfileByEmailAddess(emailAddress: string): Promise<UserProfile>;
+  getUserProfileWithUserDetails(id: string): Promise<UserProfile>;
   deleteUserProfile(id: string): Promise<void>;
 }

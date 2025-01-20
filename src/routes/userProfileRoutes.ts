@@ -22,6 +22,7 @@ router.get('/:id',
 );
 
 router.put('/:id',
+    authMiddleware, 
     validateRequest(UpdateUserProfileSchema),
     (req, res) => userProfileController.updateUserProfile(req, res)
 );

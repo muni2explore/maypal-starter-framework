@@ -15,12 +15,13 @@ export class UserProfileController {
   createUserProfile = async (req: Request, res: Response): Promise<void> => {
     try {
       const userProfile = await this.userProfileService.createUserProfile(req.body);
+      const userProfileWithDetails = await this.userProfileService.getUserProfileWithUserDetails(userProfile.id);
       res.status(201).json({
         status: 'success',
         message: 'UserProfile created successfully',
-        data: userProfile,
+        data: userProfileWithDetails,
       });
-    } catch (error: any) { // Type error as 'any' to access message
+    } catch (error: any) { 
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {

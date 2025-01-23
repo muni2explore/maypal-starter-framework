@@ -27,7 +27,7 @@ import { Term } from "../entities/Term";
 import { Feedback } from "../entities/Feedback";
 import { Licence } from "../entities/Licence";
 import { UserLicence } from "../entities/UserLicence";
-
+import { UserStatus } from "../entities/UserStatus";
 import { config } from "./environment";
 
 export const AppDataSource = new DataSource({
@@ -39,7 +39,7 @@ export const AppDataSource = new DataSource({
   database: config.database.name,
   synchronize: false,
   logging: config.database.logging,
-  entities: [User, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode ,ContactUs, StickerType, StickerStatus, Sticker, StickerItemType, StickerCallType, StickerProperty, StickerMap, StickerUserType, StickerUserStatus, StickerUser, StickerScheduleTemplate, StickerSchedule, MapPalCall, MapPalVideoCall, MapPalMessage, Faq, TermType, Term, Feedback, Licence, UserLicence ],
+  entities: [User, UserStatus, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode ,ContactUs, StickerType, StickerStatus, Sticker, StickerItemType, StickerCallType, StickerProperty, StickerMap, StickerUserType, StickerUserStatus, StickerUser, StickerScheduleTemplate, StickerSchedule, MapPalCall, MapPalVideoCall, MapPalMessage, Faq, TermType, Term, Feedback, Licence, UserLicence ],
   migrations: ["src/migrations/*.ts"],
   subscribers: [],
 });

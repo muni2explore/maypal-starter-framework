@@ -37,4 +37,9 @@ router.post('/login',
     (req, res) => userController.loginUser(req, res)
 );
 
+router.put('/:id/deactivate',
+    authMiddleware,
+    (req, res) => userController.deactivateUser(req, res) 
+);
+
 export default router;

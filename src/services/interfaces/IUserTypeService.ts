@@ -11,8 +11,8 @@ export interface UpdateUserTypeDTO {
 
 export interface IUserTypeService {
   createUserType(data: CreateUserTypeDTO): Promise<UserType>;
-  updateUserType(int: number, data: UpdateUserTypeDTO): Promise<UserType>;
-  getUserTypeByInt(int: number): Promise<UserType>;
+  updateUserType(id: number, data: UpdateUserTypeDTO): Promise<UserType>;
+  getUserTypeById(id: number): Promise<UserType>;
   getUserTypeByType(type: string): Promise<UserType>;
-  deleteUserType(int: number): Promise<void>;
+  deleteUserType(id: number): Promise<void>;
 }

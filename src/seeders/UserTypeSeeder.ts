@@ -10,6 +10,7 @@ export class UserTypeSeeder {
       { type: "Paid User" },
       { type: "Premium User" },
       { type: "Business User" },
+      { type: "Disabled User" },
     ];
 
     for (const userType of userTypes) {

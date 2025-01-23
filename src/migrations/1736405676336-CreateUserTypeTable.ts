@@ -7,7 +7,7 @@ export class CreateUserTypeTable1736405676336 implements MigrationInterface {
         new Table({
         name: "user_type",
         columns: [
-          { name: "integer", type: "int", isPrimary: true, isGenerated: true, generationStrategy: "increment" },
+          { name: "id", type: "int", isPrimary: true, isGenerated: true, generationStrategy: "increment" },
           { name: "type", type: "varchar", comment: "Trial User, Paid User, Premium User, Business User" },
           { name: "createdAt", type: "timestamp", default: "CURRENT_TIMESTAMP" },
           { name: "updatedAt", type: "timestamp", default: "CURRENT_TIMESTAMP", onUpdate: "CURRENT_TIMESTAMP" },

@@ -19,16 +19,16 @@ export class UserTypeService implements IUserTypeService {
     return this.userTypeRepository.create(data);
   }
 
-  async updateUserType(int: number, data: UpdateUserTypeDTO): Promise<UserType> {
-    const userType = await this.userTypeRepository.findByInt(int);
+  async updateUserType(id: number, data: UpdateUserTypeDTO): Promise<UserType> {
+    const userType = await this.userTypeRepository.findById(id);
     if (!userType) {
       throw new Error('UserType not found');
     }
-    return this.userTypeRepository.update(int, data);
+    return this.userTypeRepository.update(id, data);
   }
 
-  async getUserTypeByInt(int: number): Promise<UserType> {
-    const userType = await this.userTypeRepository.findByInt(int);
+  async getUserTypeById(id: number): Promise<UserType> {
+    const userType = await this.userTypeRepository.findById(id);
     if (!userType) {
       throw new Error('UserType not found');
     }
@@ -44,11 +44,11 @@ export class UserTypeService implements IUserTypeService {
     return userType;
   }
 
-  async deleteUserType(int: number): Promise<void> {
-    const userType = await this.userTypeRepository.findByInt(int);
+  async deleteUserType(id: number): Promise<void> {
+    const userType = await this.userTypeRepository.findById(id);
     if (!userType) {
       throw new Error('UserType not found');
     }
-    await this.userTypeRepository.delete(int);
+    await this.userTypeRepository.delete(id);
   }
 }

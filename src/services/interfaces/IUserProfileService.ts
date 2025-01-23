@@ -3,17 +3,17 @@ import { UserProfile } from '../../entities/UserProfile';
 
 export interface CreateUserProfileDTO {
   userid: string;
-  integer: number;
+  usertype?: number;
   firstName: string;
   lastName: string;
   emailAddress: string;
   password: string;
-  userLocale: string;
-  modifiedBy: string;
+  userLocale?: string;
+  modifiedBy?: string;
 }
 
 export interface UpdateUserProfileDTO {
-  integer?: number;
+  usertype?: number;
   firstName?: string;
   lastName?: string;
   emailAddress?: string;

@@ -1,12 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-export class UserType {
+export class UserStatus {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
-  type!: string;
+  status!: string;
 
   @CreateDateColumn()
   createdAt!: Date;

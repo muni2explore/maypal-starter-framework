@@ -75,6 +75,20 @@ export class UserController {
       }
     }
   };
+  
+  deactivateUser = async (req: Request, res: Response): Promise<void> => {
+    try {
+        await this.userService.deactivateUser(req.params.id);
+        res.status(200).json({ status: 'success', message: 'User status updated to Inactive' });
+    } catch (error: any) {
+        if (error instanceof AppError) {
+            res.status(error.statusCode).json({ message: error.message });
+        } else {
+            res.status(404).json({ status: 'fail', message: error.message || 'User not found' });
+        }
+    }
+  }
+
   loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
       const { phoneNumber } = req.body;

@@ -14,16 +14,16 @@ router.post('/create',
     (req, res) => userTypeController.createUserType(req, res)
 );
 
-router.get('/:int',
+router.get('/:id',
     (req, res) => userTypeController.getUserType(req, res)
 );
 
-router.put('/:int',
+router.put('/:id',
     validateRequest(UpdateUserTypeSchema),
     (req, res) => userTypeController.updateUserType(req, res)
 );
 
-router.delete('/:int',
+router.delete('/:id',
     (req, res) => userTypeController.deleteUserType(req, res)
 );
 

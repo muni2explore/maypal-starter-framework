@@ -29,6 +29,9 @@ import { ContactUsRepository } from '../repositories/ContactUsRepository';
 import { StickerTypeController } from '../controllers/StickerTypeController';
 import { StickerTypeService } from '../services/StickerTypeService';
 import { StickerTypeRepository } from '../repositories/StickerTypeRepository';
+import { StickerController } from '../controllers/StickerController';
+import { StickerService } from '../services/StickerService';
+import { StickerRepository } from '../repositories/StickerRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -125,6 +128,18 @@ container.register(TYPES.StickerTypeService, {
 
 container.register(TYPES.StickerTypeController, {
     useClass: StickerTypeController
+});
+
+container.register(TYPES.StickerRepository, {
+    useClass: StickerRepository
+});
+
+container.register(TYPES.StickerService, {
+    useClass: StickerService
+});
+
+container.register(TYPES.StickerController, {
+    useClass: StickerController
 });
 
 export { container };

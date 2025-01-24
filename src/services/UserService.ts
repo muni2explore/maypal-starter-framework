@@ -44,6 +44,16 @@ export class UserService implements IUserService {
     return user;
   }
 
+  async deactivateUser(userid: string): Promise<void> {
+      const user = await this.userRepository.findByUserId(userid);
+        if (!user) {
+            throw new Error('User not found');
+        }
+        const userStatus = 2; 
+      await this.userRepository.update(userid, { userStatus });
+
+    }
+
   async deleteUser(userid: string): Promise<void> {
     const user = await this.userRepository.findByUserId(userid);
     if (!user) {

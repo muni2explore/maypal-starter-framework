@@ -15,12 +15,13 @@ export class UserProfileController {
   createUserProfile = async (req: Request, res: Response): Promise<void> => {
     try {
       const userProfile = await this.userProfileService.createUserProfile(req.body);
+      const userProfileWithDetails = await this.userProfileService.getUserProfileWithUserDetails(userProfile.id);
       res.status(201).json({
         status: 'success',
-        message: 'UserProfile created successfully',
-        data: userProfile,
+        message: 'User profile created successfully',
+        data: userProfileWithDetails,
       });
-    } catch (error: any) { // Type error as 'any' to access message
+    } catch (error: any) { 
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
@@ -34,14 +35,14 @@ export class UserProfileController {
       const userProfile = await this.userProfileService.updateUserProfile((req.params.id), req.body);
        res.status(200).json({
         status: 'success',
-        message: 'UserProfile updated successfully',
+        message: 'User profile updated successfully',
         data: userProfile,
       });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ status: 'fail', message: error.message || 'UserProfile not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User profile not found' });
       }
     }
   };
@@ -51,14 +52,14 @@ export class UserProfileController {
       const userProfile = await this.userProfileService.getUserProfileById(req.params.id);
       res.status(200).json({
         status: 'success',
-        message: 'UserProfile fetched successfully',
+        message: 'User profile fetched successfully',
         data: userProfile,
       });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ status: 'fail', message: error.message || 'UserProfile not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User profile not found' });
       }
     }
   };
@@ -66,12 +67,12 @@ export class UserProfileController {
   deleteUserProfile = async (req: Request, res: Response): Promise<void> => {
     try {
       await this.userProfileService.deleteUserProfile(req.params.id);
-      res.status(200).json({ status: 'success', message: 'UserProfile deleted successfully' });
+      res.status(200).json({ status: 'success', message: 'User profile deleted successfully' });
     } catch (error: any) {
       if (error instanceof AppError) {
         res.status(error.statusCode).json({ message: error.message });
       } else {
-        res.status(404).json({ status: 'fail', message: error.message || 'UserProfile not found' });
+        res.status(404).json({ status: 'fail', message: error.message || 'User profile not found' });
       }
     }
   };

@@ -47,7 +47,7 @@ export class UserTypeController {
 
   getUserType = async (req: Request, res: Response): Promise<void> => {
     try {
-      const userType = await this.userTypeService.getUserTypeByInt(Number(req.params.int));
+      const userType = await this.userTypeService.getUserTypeById(Number(req.params.int));
         res.status(200).json({
           status: 'success',
           message: 'UserType fetched successfully',

@@ -17,4 +17,5 @@ export interface IUserService {
   getUserByUserId(userid: string): Promise<User>;
   getUserByPhoneNumber(phoneNumber: string): Promise<User>;
   deleteUser(userid: string): Promise<void>;
+  deactivateUser(userid: string): Promise<void>;
 }

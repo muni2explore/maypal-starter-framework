@@ -11,8 +11,8 @@ export class UserProfile {
   @Column()
   userid!: string;
 
-  @Column()
-  integer!: number;
+  @Column({ default: 1 }) // Default to "Trial User"
+  usertype!: number;
 
   @Column()
   firstName!: string;
@@ -26,7 +26,7 @@ export class UserProfile {
   @Column()
   password!: string;
 
-  @Column({ length: 10 })
+  @Column({ length: 10, default: "en-UK" }) // Default locale to "en-UK"
   userLocale!: string;
 
   @CreateDateColumn()
@@ -35,7 +35,7 @@ export class UserProfile {
   @UpdateDateColumn()
   modifiedTime!: Date;
 
-  @Column()
+  @Column({ default: "mobileUser" }) // Default to "mobileUser"
   modifiedBy!: string;
 
   @ManyToOne(() => User)
@@ -43,7 +43,7 @@ export class UserProfile {
   user!: User;
 
   @ManyToOne(() => UserType)
-  @JoinColumn({ name: "integer" })
+  @JoinColumn({ name: "usertype" })
   userType!: UserType;
 
   @BeforeInsert()

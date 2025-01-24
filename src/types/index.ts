@@ -38,8 +38,9 @@ export class CreateUserProfileSchema {
   @IsUUID()
   userid!: string;
 
+  @IsOptional()
   @IsNumber()
-  integer!: number;
+  usertype?: number;
 
   @IsString()
   firstName!: string;
@@ -53,18 +54,20 @@ export class CreateUserProfileSchema {
   @IsString()
   password!: string;
 
+  @IsOptional()
   @IsString()
-  userLocale!: string;
+  userLocale?: string;
 
+  @IsOptional()
   @IsString()
-  modifiedBy!: string;
+  modifiedBy?: string;
 }
 
 export class UpdateUserProfileSchema {
 
   @IsOptional()
   @IsNumber()
-  integer?: number;
+  usertype?: number;
 
   @IsOptional()
   @IsString()
@@ -239,4 +242,47 @@ export interface IAppError {
     message: string;
     details?: ValidationErrorDetail[] | string;
     isOperational?: boolean;
+}
+
+
+export class CreateStickerSchema {
+
+  @IsNumber()
+  type!: number;
+
+  @IsBoolean()
+  @IsOptional()
+  isActive?: boolean;
+
+  @IsString()
+  stickerCode!: string;
+
+  @IsNumber()
+  status!: number;
+
+  @IsString()
+  createdBy!: string;
+
+}
+
+export class UpdateStickerSchema {
+  @IsOptional()
+  @IsUUID()
+  type?: number;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
+
+  @IsOptional()
+  @IsString()
+  stickerCode?: string;
+
+  @IsOptional()
+  @IsUUID()
+  status?: number;
+
+  @IsOptional()
+  @IsString()
+  modifiedBy?: string;
 }

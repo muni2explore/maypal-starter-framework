@@ -12,8 +12,8 @@ export class UserTypeRepository implements IUserTypeRepository {
     this.repository = AppDataSource.getRepository(UserType);
   }
 
-  async findByInt(int: number): Promise<UserType | null> {
-    return this.repository.findOneBy({ integer: int });
+  async findById(id: number): Promise<UserType | null> {
+    return this.repository.findOneBy({ id });
   }
 
 
@@ -26,14 +26,14 @@ export class UserTypeRepository implements IUserTypeRepository {
     return this.repository.save(newUserType);
   }
 
-  async update(int: number, userType: Partial<UserType>): Promise<UserType> {
-    await this.repository.update(int, userType);
-    const updateduserType = await this.findByInt(int);
+  async update(id: number, userType: Partial<UserType>): Promise<UserType> {
+    await this.repository.update(id, userType);
+    const updateduserType = await this.findById(id);
     if (!updateduserType) throw new Error('User Type not found');
     return updateduserType;
   }
 
-  async delete(int: number): Promise<void> {
-    await this.repository.delete(int);
+  async delete(id: number): Promise<void> {
+    await this.repository.delete(id);
   }
 }

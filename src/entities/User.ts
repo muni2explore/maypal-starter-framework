@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn  } from "typeorm";
+import { UserStatus } from "./UserStatus";
 
 @Entity()
 export class User {
@@ -16,5 +17,12 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+
+  @Column({ type: "int", default: 1 })
+  userStatus!: number;
+
+  @ManyToOne(() => UserStatus)
+  @JoinColumn({ name: "userStatus" })
+  userStatusId!: UserStatus;
 
 }

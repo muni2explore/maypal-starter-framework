@@ -3,17 +3,17 @@ import { UserProfile } from '../../entities/UserProfile';
 
 export interface CreateUserProfileDTO {
   userid: string;
-  integer: number;
+  usertype?: number;
   firstName: string;
   lastName: string;
   emailAddress: string;
   password: string;
-  userLocale: string;
-  modifiedBy: string;
+  userLocale?: string;
+  modifiedBy?: string;
 }
 
 export interface UpdateUserProfileDTO {
-  integer?: number;
+  usertype?: number;
   firstName?: string;
   lastName?: string;
   emailAddress?: string;
@@ -27,5 +27,6 @@ export interface IUserProfileService {
   updateUserProfile(id: string, data: UpdateUserProfileDTO): Promise<UserProfile>;
   getUserProfileById(id: string): Promise<UserProfile>;
   getUserProfileByEmailAddess(emailAddress: string): Promise<UserProfile>;
+  getUserProfileWithUserDetails(id: string): Promise<UserProfile>;
   deleteUserProfile(id: string): Promise<void>;
 }

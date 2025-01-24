@@ -1,15 +1,19 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
 import { StickerType } from "./StickerType";
 import { StickerStatus } from "./StickerStatus";
 
 @Entity()
 export class Sticker {
-  @PrimaryColumn()
+
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
+
+  @Column({ type: "int" }) 
+  type!: number;
 
   @ManyToOne(() => StickerType, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "type" })
-  type!: StickerType;
+  stickerType!: StickerType;
 
   @Column({ type: "boolean", default: true })
   isActive!: boolean;
@@ -17,9 +21,12 @@ export class Sticker {
   @Column({ type: "varchar", length: 12 })
   stickerCode!: string;
 
+  @Column({ type: "int" }) 
+  status!: number;
+
   @ManyToOne(() => StickerStatus, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "status" })
-  status!: StickerStatus;
+  stickerStatus!: StickerStatus;
 
   @Column()
   createdBy!: string;

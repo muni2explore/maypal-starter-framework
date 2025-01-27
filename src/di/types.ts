@@ -26,4 +26,10 @@ export const TYPES = {
     StickerService: Symbol('StickerService'),
     StickerRepository: Symbol('StickerRepository'),
     StickerController: Symbol('StickerController'),
+    StickerPropertyService: Symbol('StickerPropertyService'),
+    StickerPropertyRepository: Symbol('StickerPropertyRepository'),
+    StickerPropertyController: Symbol('StickerPropertyController'),
+    StickerMapService: Symbol('StickerMapService'),
+    StickerMapRepository: Symbol('StickerMapRepository'),
+    StickerMapController: Symbol('StickerMapController'),
 };

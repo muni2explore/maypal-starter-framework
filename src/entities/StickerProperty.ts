@@ -11,23 +11,32 @@ export class StickerProperty {
   @Column()
   stickerName!: string;
 
+  @Column({ type: "uuid" }) 
+  stickerId!: string;
+
   @ManyToOne(() => Sticker)
   @JoinColumn({ name: "stickerId" })
   sticker!: Sticker;
 
-  @Column()
+  @Column({ default: 4 })
   maximumUsers!: number;
 
   @Column({ length: 6 })
   stickerPin!: string;
+  
+  @Column({ type: "int" }) 
+  itemTypeId!: number;
 
   @ManyToOne(() => StickerItemType)
-  @JoinColumn({ name: "type" })
-  type!: StickerItemType;
+  @JoinColumn({ name: "itemTypeId" })
+  stickerItemType!: StickerItemType;
+
+  @Column({ type: "int" }) 
+  callTypeId!: number; 
 
   @ManyToOne(() => StickerCallType)
-  @JoinColumn({ name: "callType" })
-  callType!: StickerCallType;
+  @JoinColumn({ name: "callTypeId" })
+  stickerCallType!: StickerCallType;
 
   @Column({ nullable: true })
   helpText1!: string;
@@ -36,9 +45,6 @@ export class StickerProperty {
   helpText2!: string;
 
   @Column()
-  itemType!: number;
-
-  @Column({ type: "text", nullable: true })
   automaticReply!: string;
 
   @Column()

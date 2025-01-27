@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, IsBoolean } from 'class-validator';
+import { IsString, IsOptional, IsMobilePhone, IsNumber, IsEmail, IsUUID, IsBoolean, Length } from 'class-validator';
 
 export class CreateUserSchema {
   @IsNumber()
@@ -248,7 +248,7 @@ export interface IAppError {
 export class CreateStickerSchema {
 
   @IsNumber()
-  type!: number;
+  stickerTypeId!: number;
 
   @IsBoolean()
   @IsOptional()
@@ -258,7 +258,7 @@ export class CreateStickerSchema {
   stickerCode!: string;
 
   @IsNumber()
-  status!: number;
+  stickerStatusId!: number;
 
   @IsString()
   createdBy!: string;
@@ -267,8 +267,8 @@ export class CreateStickerSchema {
 
 export class UpdateStickerSchema {
   @IsOptional()
-  @IsUUID()
-  type?: number;
+  @IsNumber()
+  StickerTypeId?: number;
 
   @IsOptional()
   @IsBoolean()
@@ -280,9 +280,104 @@ export class UpdateStickerSchema {
 
   @IsOptional()
   @IsUUID()
-  status?: number;
+  stickerStatusId?: number;
 
   @IsOptional()
   @IsString()
   modifiedBy?: string;
+}
+
+export class CreateStickerPropertySchema {
+  @IsString()
+  stickerName!: string;
+
+  @IsUUID()
+  stickerId!: string;
+
+  @IsNumber()
+  maximumUsers!: number;
+
+  @IsString()
+  stickerPin!: string;
+
+  @IsNumber()
+  itemTypeId!: number;
+
+  @IsNumber()
+  callTypeId!: number;
+
+  @IsOptional()
+  @IsString()
+  helpText1?: string;
+
+  @IsOptional()
+  @IsString()
+  helpText2?: string;
+
+  @IsOptional()
+  @IsString()
+  automaticReply?: string;
+
+  @IsString()
+  createdBy!: string;
+}
+
+export class UpdateStickerPropertySchema {
+  @IsOptional()
+  @IsString()
+  stickerName?: string;
+
+  @IsOptional()
+  @IsUUID()
+  stickerId?: string;
+
+  @IsOptional()
+  @IsNumber()
+  maximumUsers?: number;
+
+  @IsOptional()
+  @IsString()
+  stickerPin?: string;
+
+  @IsOptional()
+  @IsNumber()
+  itemTypeId?: number;
+
+  @IsOptional()
+  @IsNumber()
+  callTypeId?: number;
+
+  @IsOptional()
+  @IsString()
+  helpText1?: string;
+
+  @IsOptional()
+  @IsString()
+  helpText2?: string;
+
+  @IsOptional()
+  @IsString()
+  automaticReply?: string;
+
+  @IsOptional()
+  @IsString()
+  modifiedBy?: string;
+}
+
+export class CreateStickerMapSchema {
+  @IsString()
+  mapCode!: string;
+
+  @IsUUID()
+  stickerId!: string; 
+}
+
+export class UpdateStickerMapSchema {
+  @IsOptional()
+  @IsString()
+  mapCode?: string;
+
+  @IsOptional()
+  @IsUUID()
+  stickerId?: string; 
 }

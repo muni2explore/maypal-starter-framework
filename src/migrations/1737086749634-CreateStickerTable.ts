@@ -7,11 +7,11 @@ export class CreateStickerTable1737086749634 implements MigrationInterface {
             new Table({
                 name: "sticker",
                 columns: [
-                    { name: "id", type: "char", length: "36", isPrimary: true, isNullable: false },
-                    { name: "type", type: "int", isNullable: false },
+                    { name: "id", type: "char", length: "36", isPrimary: true, isNullable: false},
+                    { name: "stickerTypeId", type: "int", isNullable: false },
                     { name: "isActive", type: "boolean", default: true },
                     { name: "stickerCode", type: "varchar", length: "12", isNullable: false, comment: "12 digit random string without special characters" },
-                    { name: "status", type: "int", isNullable: false },
+                    { name: "stickerStatusId", type: "int", isNullable: false },
                     { name: "createdBy", type: "varchar", isNullable: false },
                     { name: "createOn", type: "datetime", default: "CURRENT_TIMESTAMP" },
                     { name: "modifiedBy", type: "varchar", isNullable: true },
@@ -23,7 +23,7 @@ export class CreateStickerTable1737086749634 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker",
             new TableForeignKey({
-                columnNames: ["type"],
+                columnNames: ["stickerTypeId"],
                 referencedTableName: "sticker_type",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",
@@ -34,7 +34,7 @@ export class CreateStickerTable1737086749634 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker",
             new TableForeignKey({
-                columnNames: ["status"],
+                columnNames: ["stickerStatusId"],
                 referencedTableName: "sticker_status",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",

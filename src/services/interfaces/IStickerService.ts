@@ -3,18 +3,18 @@ import { Sticker } from '../../entities/Sticker';
 
 export interface CreateStickerDTO {
   id: string;
-  type: number;
+  stickerTypeId: number;
   isActive?: boolean;
   stickerCode: string;
-  status: number;
+  stickerStatusId: number;
   createdBy: string;
 }
 
 export interface UpdateStickerDTO {
-  type?: number;
+  stickerTypeId?: number;
   isActive?: boolean;
   stickerCode?: string;
-  status?: number;
+  stickerStatusId?: number;
   modifiedBy?: string;
 }
 

@@ -32,6 +32,12 @@ import { StickerTypeRepository } from '../repositories/StickerTypeRepository';
 import { StickerController } from '../controllers/StickerController';
 import { StickerService } from '../services/StickerService';
 import { StickerRepository } from '../repositories/StickerRepository';
+import { StickerPropertyController } from '../controllers/StickerPropertyController';
+import { StickerPropertyService } from '../services/StickerPropertyService';
+import { StickerPropertyRepository } from '../repositories/StickerPropertyRepository';
+import { StickerMapController } from '../controllers/StickerMapController';
+import { StickerMapService } from '../services/StickerMapService';
+import { StickerMapRepository } from '../repositories/StickerMapRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -140,6 +146,31 @@ container.register(TYPES.StickerService, {
 
 container.register(TYPES.StickerController, {
     useClass: StickerController
+});
+
+container.register(TYPES.StickerPropertyRepository, {
+    useClass: StickerPropertyRepository
+});
+
+container.register(TYPES.StickerPropertyService, {
+    useClass: StickerPropertyService
+});
+
+container.register(TYPES.StickerPropertyController, {
+    useClass: StickerPropertyController
+});
+
+
+container.register(TYPES.StickerMapRepository, {
+    useClass: StickerMapRepository
+});
+
+container.register(TYPES.StickerMapService, {
+    useClass: StickerMapService
+});
+
+container.register(TYPES.StickerMapController, {
+    useClass: StickerMapController
 });
 
 export { container };

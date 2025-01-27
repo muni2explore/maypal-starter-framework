@@ -9,10 +9,10 @@ export class Sticker {
   id!: string;
 
   @Column({ type: "int" }) 
-  type!: number;
+  stickerTypeId!: number;
 
   @ManyToOne(() => StickerType, { onDelete: "CASCADE", onUpdate: "CASCADE" })
-  @JoinColumn({ name: "type" })
+  @JoinColumn({ name: "stickerTypeId" })
   stickerType!: StickerType;
 
   @Column({ type: "boolean", default: true })
@@ -22,10 +22,10 @@ export class Sticker {
   stickerCode!: string;
 
   @Column({ type: "int" }) 
-  status!: number;
+  stickerStatusId!: number;
 
   @ManyToOne(() => StickerStatus, { onDelete: "CASCADE", onUpdate: "CASCADE" })
-  @JoinColumn({ name: "status" })
+  @JoinColumn({ name: "stickerStatusId" })
   stickerStatus!: StickerStatus;
 
   @Column()

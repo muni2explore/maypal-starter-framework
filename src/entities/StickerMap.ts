@@ -9,7 +9,11 @@ export class StickerMap {
   @Column()
   mapCode!: string;
 
+  @Column({ type: "uuid" }) 
+  stickerId!: string;
+
+  
   @ManyToOne(() => Sticker)
-  @JoinColumn({ name: "sticker" })
+  @JoinColumn({ name: "stickerId" })
   sticker!: Sticker;
 }

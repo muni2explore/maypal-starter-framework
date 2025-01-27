@@ -8,6 +8,9 @@ import verificationCodeRoutes from './verificationCodeRoutes';
 import contactUsRoutes from './contactUsRoutes';
 import stickerTypeRoutes from './stickerTypeRoutes';
 import stickerRoutes from './stickerRoutes';
+import stickerPropertyRoutes from './stickerPropertyRoutes';
+import stickerMapRoutes from './stickerMapRoutes';
+
 import { logger } from '../utils/logger';
 
 const router = Router();
@@ -30,6 +33,10 @@ router.use(`${API_PREFIX}/verificationCode`, verificationCodeRoutes);
 router.use(`${API_PREFIX}/contactUs`, contactUsRoutes);
 router.use(`${API_PREFIX}/stickerType`, stickerTypeRoutes);
 router.use(`${API_PREFIX}/stickers`, stickerRoutes);
+router.use(`${API_PREFIX}/stickerProperty`, stickerPropertyRoutes);
+router.use(`${API_PREFIX}/stickerMap`, stickerMapRoutes);
+
+
 
 // 404 handler for undefined routes
 router.use('*', (req, res) => {

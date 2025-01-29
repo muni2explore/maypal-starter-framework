@@ -10,6 +10,8 @@ import stickerTypeRoutes from './stickerTypeRoutes';
 import stickerRoutes from './stickerRoutes';
 import stickerPropertyRoutes from './stickerPropertyRoutes';
 import stickerMapRoutes from './stickerMapRoutes';
+import stickerUserRoutes from './stickerUserRoutes';
+
 
 import { logger } from '../utils/logger';
 
@@ -35,7 +37,7 @@ router.use(`${API_PREFIX}/stickerType`, stickerTypeRoutes);
 router.use(`${API_PREFIX}/stickers`, stickerRoutes);
 router.use(`${API_PREFIX}/stickerProperty`, stickerPropertyRoutes);
 router.use(`${API_PREFIX}/stickerMap`, stickerMapRoutes);
-
+router.use(`${API_PREFIX}/stickerUser`, stickerUserRoutes);
 
 
 // 404 handler for undefined routes

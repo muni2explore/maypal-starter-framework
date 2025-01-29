@@ -10,30 +10,45 @@ export class StickerUser {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
+  @Column({ type: "uuid" }) 
+  stickerId!: string;
+
   @ManyToOne(() => Sticker)
-  @JoinColumn({ name: "sticker" })
+  @JoinColumn({ name: "stickerId" })
   sticker!: Sticker;
 
+  @Column({ type: "int" }) 
+  userTypeId!: number;
+
   @ManyToOne(() => StickerUserType)
-  @JoinColumn({ name: "userType" })
+  @JoinColumn({ name: "userTypeId" })
   userType!: StickerUserType;
 
   @Column()
   userDescription!: string;
 
+  @Column({ type: "uuid" }) 
+  mapId!: string;
+
   @ManyToOne(() => StickerMap)
-  @JoinColumn({ name: "mapCode" })
+  @JoinColumn({ name: "mapId" })
   mapCode!: StickerMap;
+
+  @Column({ type: "uuid" }) 
+  userId!: string;
 
   @ManyToOne(() => User)
   @JoinColumn({ name: "userId" })
-  userId!: User;
+  user!: User;
 
   @Column({ default: true })
   isActive!: boolean;
 
+  @Column({ type: "int" }) 
+  statusId!: number;
+
   @ManyToOne(() => StickerUserStatus)
-  @JoinColumn({ name: "status" })
+  @JoinColumn({ name: "statusId" })
   status!: StickerUserStatus;
 
   @Column()

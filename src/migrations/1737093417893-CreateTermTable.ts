@@ -8,7 +8,7 @@ export class CreateTermTable1737093417893 implements MigrationInterface {
         name: "term",
         columns: [
           { name: "id", type: "int", isPrimary: true, isGenerated: true, generationStrategy: "increment" },
-          { name: "type", type: "int", isNullable: false },
+          { name: "typeId", type: "int", isNullable: false },
           { name: "title", type: "varchar", length: "255", isNullable: false },
           { name: "content", type: "text", isNullable: false },
           { name: "version", type: "int", isNullable: false },
@@ -24,7 +24,7 @@ export class CreateTermTable1737093417893 implements MigrationInterface {
     await queryRunner.createForeignKey(
       "term",
       new TableForeignKey({
-        columnNames: ["type"],
+        columnNames: ["typeId"],
         referencedTableName: "term_type",
         referencedColumnNames: ["id"],
         onDelete: "CASCADE",  

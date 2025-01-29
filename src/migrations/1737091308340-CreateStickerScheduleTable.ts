@@ -8,7 +8,7 @@ export class CreateStickerScheduleTable1737091308340 implements MigrationInterfa
                 name: "sticker_schedule",
                 columns: [
                     { name: "id", type: "char", length: "36", isPrimary: true, isNullable: false },
-                    { name: "sticker", type: "char", length: "36", isNullable: false },
+                    { name: "stickerId", type: "char", length: "36", isNullable: false },
                     { name: "dayOfWeek", type: "int", isNullable: false },
                     { name: "startTime", type: "time", isNullable: false },
                     { name: "endTime", type: "time", isNullable: false },
@@ -26,7 +26,7 @@ export class CreateStickerScheduleTable1737091308340 implements MigrationInterfa
         await queryRunner.createForeignKey(
             "sticker_schedule",
             new TableForeignKey({
-                columnNames: ["sticker"],
+                columnNames: ["stickerId"],
                 referencedTableName: "sticker",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",

@@ -9,7 +9,7 @@ export class CreateUserLicenceTable1737094304516 implements MigrationInterface {
         columns: [
           { name: "id", type: "char", length: "36", isPrimary: true, isNullable: false },
           { name: "userid", type: "char", length: "36", isNullable: false }, 
-          { name: "plan", type: "int", isNullable: false }, 
+          { name: "licenceId", type: "int", isNullable: false }, 
           { name: "startDate", type: "date", isNullable: false },
           { name: "endDate", type: "date", isNullable: false },
           { name: "createdBy", type: "varchar", length: "255", isNullable: false },
@@ -32,7 +32,7 @@ export class CreateUserLicenceTable1737094304516 implements MigrationInterface {
     await queryRunner.createForeignKey(
       "user_licence",
       new TableForeignKey({
-        columnNames: ["plan"],
+        columnNames: ["licenceId"],
         referencedTableName: "licence",
         referencedColumnNames: ["id"],
         onDelete: "CASCADE",  

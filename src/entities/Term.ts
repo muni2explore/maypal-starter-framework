@@ -6,8 +6,11 @@ export class Term {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Column({ type: "int" }) 
+  typeId!: number;
+
   @ManyToOne(() => TermType)
-  @JoinColumn({ name: "type" })
+  @JoinColumn({ name: "typeId" })
   type!: TermType;  
 
   @Column("varchar")

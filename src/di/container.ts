@@ -38,6 +38,9 @@ import { StickerPropertyRepository } from '../repositories/StickerPropertyReposi
 import { StickerMapController } from '../controllers/StickerMapController';
 import { StickerMapService } from '../services/StickerMapService';
 import { StickerMapRepository } from '../repositories/StickerMapRepository';
+import { StickerUserController } from '../controllers/StickerUserController';
+import { StickerUserService } from '../services/StickerUserService';
+import { StickerUserRepository } from '../repositories/StickerUserRepository';
 
 // Register all dependencies
 container.register(TYPES.UserRepository, {
@@ -171,6 +174,18 @@ container.register(TYPES.StickerMapService, {
 
 container.register(TYPES.StickerMapController, {
     useClass: StickerMapController
+});
+
+container.register(TYPES.StickerUserRepository, {
+    useClass: StickerUserRepository
+});
+
+container.register(TYPES.StickerUserService, {
+    useClass: StickerUserService
+});
+
+container.register(TYPES.StickerUserController, {
+    useClass: StickerUserController
 });
 
 export { container };

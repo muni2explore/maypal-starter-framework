@@ -5,6 +5,8 @@ import { StickerItemTypeSeeder } from '../seeders/StickerItemTypeSeeder';
 import { StickerCallTypeSeeder } from '../seeders/StickerCallTypeSeeder';
 import { UserTypeSeeder } from '../seeders/UserTypeSeeder';
 import { UserStatusSeeder } from '../seeders/UserStatusSeeder';
+import { StickerUserTypeSeeder } from '../seeders/StickerUserTypeSeeder';
+import { StickerUserStatusSeeder } from '../seeders/StickerUserStatusSeeder';
 
 async function runSeeders() {
   try {
@@ -18,6 +20,8 @@ async function runSeeders() {
     await StickerCallTypeSeeder.seed(AppDataSource);
     await UserTypeSeeder.seed(AppDataSource);
     await UserStatusSeeder.seed(AppDataSource);
+    await StickerUserTypeSeeder.seed(AppDataSource);
+    await StickerUserStatusSeeder.seed(AppDataSource);
 
     console.log("Seeding completed successfully.");
     process.exit(0);

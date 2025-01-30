@@ -381,3 +381,65 @@ export class UpdateStickerMapSchema {
   @IsUUID()
   stickerId?: string; 
 }
+
+export class CreateStickerUserSchema {
+  @IsUUID()
+  stickerId!: string;
+
+  @IsNumber()
+  userTypeId!: number;
+
+  @IsString()
+  userDescription!: string;
+
+  @IsUUID()
+  mapId!: string;
+
+  @IsUUID()
+  userId!: string;
+
+  @IsBoolean()
+  @IsOptional()
+  isActive?: boolean = true;
+
+  @IsNumber()
+  statusId!: number;
+
+  @IsString()
+  createdBy!: string;
+
+}
+
+export class UpdateStickerUserSchema {
+  @IsOptional()
+  @IsUUID()
+  stickerId?: string;
+
+  @IsOptional()
+  @IsNumber()
+  userType?: number;
+
+  @IsOptional()
+  @IsString()
+  userDescription?: string;
+
+  @IsOptional()
+  @IsUUID()
+  mapId?: string;
+
+  @IsOptional()
+  @IsUUID()
+  userId?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isActive?: boolean;
+
+  @IsOptional()
+  @IsNumber()
+  statusId?: number;
+
+  @IsOptional()
+  @IsString()
+  modifiedBy?: string;
+}

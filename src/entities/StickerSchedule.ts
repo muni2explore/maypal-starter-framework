@@ -7,8 +7,11 @@ export class StickerSchedule {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
+  @Column({ type: "uuid" }) 
+  stickerId!: string;
+
   @ManyToOne(() => Sticker)
-  @JoinColumn({ name: "sticker" })
+  @JoinColumn({ name: "stickerId" })
   sticker!: Sticker;
 
   @Column()

@@ -8,16 +8,16 @@ export class CreateStickerUserTable1737090506933 implements MigrationInterface {
                 name: "sticker_user",
                 columns: [
                     { name: "id", type: "char", length: "36", isPrimary: true, isNullable: false },
-                    { name: "sticker", type: "char", length: "36", isNullable: false },
-                    { name: "userType", type: "int", isNullable: false },
+                    { name: "stickerId", type: "char", length: "36", isNullable: false },
+                    { name: "userTypeId", type: "int", isNullable: false },
                     { name: "userDescription", type: "varchar", isNullable: false },
-                    { name: "mapCode", type: "char", length: "36", isNullable: false },
+                    { name: "mapId", type: "char", length: "36", isNullable: false },
                     { name: "userId", type: "char", length: "36", isNullable: false },
                     { name: "isActive", type: "boolean", default: true },
-                    { name: "status", type: "int", isNullable: false },
+                    { name: "statusId", type: "int", isNullable: false },
                     { name: "createdBy", type: "varchar", isNullable: false },
                     { name: "createOn", type: "datetime", default: "CURRENT_TIMESTAMP" },
-                    { name: "modifiedBy", type: "varchar", isNullable: false },
+                    { name: "modifiedBy", type: "varchar", isNullable: true },
                     { name: "modifiedOn", type: "datetime", isNullable: true },
                 ],
             })
@@ -26,7 +26,7 @@ export class CreateStickerUserTable1737090506933 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker_user",
             new TableForeignKey({
-                columnNames: ["status"],
+                columnNames: ["statusId"],
                 referencedTableName: "sticker_user_status",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",  
@@ -37,7 +37,7 @@ export class CreateStickerUserTable1737090506933 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker_user",
             new TableForeignKey({
-                columnNames: ["sticker"],
+                columnNames: ["stickerId"],
                 referencedTableName: "sticker",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",  
@@ -48,7 +48,7 @@ export class CreateStickerUserTable1737090506933 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker_user",
             new TableForeignKey({
-                columnNames: ["userType"],
+                columnNames: ["userTypeId"],
                 referencedTableName: "sticker_user_type",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",  
@@ -59,7 +59,7 @@ export class CreateStickerUserTable1737090506933 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "sticker_user",
             new TableForeignKey({
-                columnNames: ["mapCode"],
+                columnNames: ["mapId"],
                 referencedTableName: "sticker_map",
                 referencedColumnNames: ["id"],
                 onDelete: "CASCADE",  

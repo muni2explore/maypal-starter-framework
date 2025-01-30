@@ -7,12 +7,18 @@ export class UserLicence {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
+  @Column({ type: "uuid" }) 
+  userid!: string;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: "userid" })
   user!: User;  
 
+  @Column({ type: "int" }) 
+  licenceId!: number;
+
   @ManyToOne(() => Licence)
-  @JoinColumn({ name: "plan" })
+  @JoinColumn({ name: "licenceId" })
   licence!: Licence;   
 
   @Column("date")

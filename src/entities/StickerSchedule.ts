@@ -1,6 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Sticker } from "./Sticker";
-import { StickerScheduleTemplate } from "./StickerScheduleTemplate";
 
 @Entity()
 export class StickerSchedule {
@@ -28,10 +27,6 @@ export class StickerSchedule {
 
   @Column()
   isScheduleActive!: boolean;
-
-  @ManyToOne(() => StickerScheduleTemplate)
-  @JoinColumn({ name: "templateId" })
-  templateId!: StickerScheduleTemplate;
 
   @Column()
   createdBy!: string;

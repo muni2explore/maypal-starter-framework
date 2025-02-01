@@ -443,3 +443,58 @@ export class UpdateStickerUserSchema {
   @IsString()
   modifiedBy?: string;
 }
+
+export class CreateStickerScheduleSchema {
+  @IsUUID()
+  stickerId!: string;
+
+  @IsNumber()
+  dayOfWeek!: number;
+
+  @IsString()
+  startTime!: string;
+
+  @IsString()
+  endTime!: string;
+
+  @IsBoolean()
+  @IsOptional()
+  isEnabledToConnect?: boolean = true;
+
+  @IsBoolean()
+  @IsOptional()
+  isScheduleActive?: boolean = true;
+
+  @IsString()
+  createdBy!: string;
+}
+
+export class UpdateStickerScheduleSchema {
+  @IsOptional()
+  @IsUUID()
+  stickerId?: string;
+
+  @IsOptional()
+  @IsNumber()
+  dayOfWeek?: number;
+
+  @IsOptional()
+  @IsString()
+  startTime?: string;
+
+  @IsOptional()
+  @IsString()
+  endTime?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  isEnabledToConnect?: boolean;
+
+  @IsOptional()
+  @IsBoolean()
+  isScheduleActive?: boolean;
+
+  @IsOptional()
+  @IsString()
+  modifiedBy?: string;
+}

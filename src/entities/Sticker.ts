@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn ,OneToMany } from "typeorm";
 import { StickerType } from "./StickerType";
 import { StickerStatus } from "./StickerStatus";
+import { StickerProperty } from "./StickerProperty";
 
 @Entity()
 export class Sticker {
@@ -27,6 +28,10 @@ export class Sticker {
   @ManyToOne(() => StickerStatus, { onDelete: "CASCADE", onUpdate: "CASCADE" })
   @JoinColumn({ name: "stickerStatusId" })
   stickerStatus!: StickerStatus;
+
+  @OneToMany(() => StickerProperty, (stickerProperty) => stickerProperty.sticker)
+  stickerProperties!: StickerProperty[];
+
 
   @Column()
   createdBy!: string;

@@ -16,6 +16,17 @@ export interface CreateStickerUserDTO {
   modifiedOn?: Date;
 }
 
+export interface StickerUserSummary {
+isActive: boolean;
+    mapCode: string | null;
+    stickerProperties: {
+        maximumUsers: number;
+        stickerItemType: string;
+        stickerCallType: string;
+    } | null;
+    stickerItemType: string;
+}
+
 export interface UpdateStickerUserDTO {
   stickerId?: string;
   userTypeId?: number;
@@ -33,5 +44,5 @@ export interface IStickerUserService {
   updateStickerUser(id: string, data: UpdateStickerUserDTO): Promise<StickerUser>;
   getStickerUserById(id: string): Promise<StickerUser>;
   deleteStickerUser(id: string): Promise<void>;
-  getAllStickersForUser(userId: string): Promise<StickerUser[]>;
+  getAllStickersForUser(userId: string): Promise<StickerUserSummary[]>;
 }

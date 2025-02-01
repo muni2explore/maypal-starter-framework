@@ -35,4 +35,7 @@ export const TYPES = {
     StickerUserService: Symbol('StickerUserService'),
     StickerUserRepository: Symbol('StickerUserRepository'),
     StickerUserController: Symbol('StickerUserController'),
+    StickerScheduleService: Symbol('StickerScheduleService'),
+    StickerScheduleRepository: Symbol('StickerScheduleRepository'),
+    StickerScheduleController: Symbol('StickerScheduleController'),
 };

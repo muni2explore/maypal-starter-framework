@@ -16,7 +16,6 @@ import { StickerMap } from "../entities/StickerMap";
 import { StickerUserType } from "../entities/StickerUserType";
 import { StickerUserStatus } from "../entities/StickerUserStatus";
 import { StickerUser } from "../entities/StickerUser";
-import { StickerScheduleTemplate } from "../entities/StickerScheduleTemplate";
 import { StickerSchedule } from "../entities/StickerSchedule";
 import { MapPalCall } from "../entities/MapPalCall";
 import { MapPalVideoCall } from "../entities/MapPalVideoCall";
@@ -39,7 +38,7 @@ export const AppDataSource = new DataSource({
   database: config.database.name,
   synchronize: false,
   logging: config.database.logging,
-  entities: [User, UserStatus, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode ,ContactUs, StickerType, StickerStatus, Sticker, StickerItemType, StickerCallType, StickerProperty, StickerMap, StickerUserType, StickerUserStatus, StickerUser, StickerScheduleTemplate, StickerSchedule, MapPalCall, MapPalVideoCall, MapPalMessage, Faq, TermType, Term, Feedback, Licence, UserLicence ],
+  entities: [User, UserStatus, UserType, UserProfile, UserPin, UserPinHistory, VerificationCode ,ContactUs, StickerType, StickerStatus, Sticker, StickerItemType, StickerCallType, StickerProperty, StickerMap, StickerUserType, StickerUserStatus, StickerUser, StickerSchedule, MapPalCall, MapPalVideoCall, MapPalMessage, Faq, TermType, Term, Feedback, Licence, UserLicence ],
   migrations: ["src/migrations/*.ts"],
   subscribers: [],
 });

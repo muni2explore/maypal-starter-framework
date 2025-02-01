@@ -45,10 +45,11 @@ export class StickerUserRepository implements IStickerUserRepository {
             where: { userId },
             relations: [
                 'sticker',
-                'userType',
-                'status',
-                'mapCode', // Assuming these relations are properly defined in your entity
-                'user',    // Avoid returning 'userId' from the result
+                'sticker.stickerType',
+                'sticker.stickerProperties',
+                'sticker.stickerProperties.stickerItemType',
+                'sticker.stickerProperties.stickerCallType',
+                'mapCode', 
             ],
         });
     }

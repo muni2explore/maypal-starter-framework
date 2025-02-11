@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { Sticker } from "./Sticker";
 import { StickerItemType } from "./StickerItemType";
 import { StickerCallType } from "./StickerCallType";
@@ -14,7 +14,7 @@ export class StickerProperty {
   @Column({ type: "uuid" }) 
   stickerId!: string;
 
-  @ManyToOne(() => Sticker)
+  @OneToOne(() => Sticker)
   @JoinColumn({ name: "stickerId" })
   sticker!: Sticker;
 

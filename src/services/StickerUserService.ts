@@ -45,30 +45,26 @@ export class StickerUserService implements IStickerUserService {
     await this.stickerUserRepository.delete(id);
   }
 
-      async getAllStickersForUser(userId: string): Promise<StickerUserSummary[]> {
-  const stickerUsers = await this.stickerUserRepository.findAllByUserId(userId);
+  async getAllStickersForUser(userId: string): Promise<StickerUserSummary[]> {
+    const stickerUsers = await this.stickerUserRepository.findAllByUserId(userId);
 
-  if (!Array.isArray(stickerUsers) || stickerUsers.length === 0) {
-    throw new Error('No StickerUser records found for this userId');
+    if (!Array.isArray(stickerUsers) || stickerUsers.length === 0) {
+      throw new Error('No StickerUser records found for this userId');
+    }
+
+    return stickerUsers.map(stickerUser => {
+      const sticker = stickerUser.sticker || {};
+      const stickerProperties = sticker.stickerProperties;
+
+      return {
+        isActive: stickerUser.isActive,
+        mapCode: stickerUser.mapCode?.mapCode || null,
+        maximumUsers: stickerProperties?.maximumUsers || 0,
+        stickerItemType: stickerProperties?.stickerItemType?.type || 'N/A',
+        stickerCallType: stickerProperties?.stickerCallType?.type || 'N/A',
+        stickerType: sticker.stickerType?.type || 'N/A',
+      };
+    });
   }
-
-  return stickerUsers.map(stickerUser => {
-    const sticker = stickerUser.sticker || {};
-    const stickerProperties = sticker.stickerProperties || [];
-
-    return {
-      isActive: stickerUser.isActive,
-      mapCode: stickerUser.mapCode?.mapCode || null, 
-      stickerProperties: stickerProperties.length > 0
-        ? {
-            maximumUsers: stickerProperties[0].maximumUsers,
-            stickerItemType: stickerProperties[0].stickerItemType?.type || 'N/A',
-            stickerCallType: stickerProperties[0].stickerCallType?.type || 'N/A',
-          }
-        : null,
-      stickerItemType: sticker.stickerType?.type || 'N/A',
-    };
-  });
-}
   
 }

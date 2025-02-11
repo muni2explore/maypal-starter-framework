@@ -12,9 +12,15 @@ export class StickerPropertyService implements IStickerPropertyService {
     ) {}
 
   async createStickerProperty(data: CreateStickerPropertyDTO): Promise<StickerProperty> {
-    const existingStickerPropertyCode = await this.stickerPropertyRepository.findByPin(data.stickerPin);
-    if (existingStickerPropertyCode) {
-    throw new Error('StickerProperty with this StickerPropertyCode already exists');
+    const existingStickerId = await this.stickerPropertyRepository.findByStickerId(data.stickerId);
+    const existingStickerPin = await this.stickerPropertyRepository.findByPin(data.stickerPin);
+    
+    if (existingStickerId) {
+      throw new Error('StickerProperty with this StickerId already exists');
+    }
+    if(existingStickerPin)
+    {
+      throw new Error('StickerProperty of StickerId with this StickerPin already exists');
     }
     return this.stickerPropertyRepository.create(data);
   }

@@ -17,14 +17,12 @@ export interface CreateStickerUserDTO {
 }
 
 export interface StickerUserSummary {
-isActive: boolean;
-    mapCode: string | null;
-    stickerProperties: {
-        maximumUsers: number;
-        stickerItemType: string;
-        stickerCallType: string;
-    } | null;
-    stickerItemType: string;
+  isActive: boolean;
+  mapCode: string | null;
+  maximumUsers: number;
+  stickerItemType: string;
+  stickerCallType: string;
+  stickerType: string;
 }
 
 export interface UpdateStickerUserDTO {

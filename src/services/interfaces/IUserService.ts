@@ -2,21 +2,20 @@
 import { User } from '../../entities/User';
 
 export interface CreateUserDTO {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
+  countryCode: number;
+  phoneNumber: string;
 }
 
 export interface UpdateUserDTO {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
+  countryCode: number;
+  phoneNumber: string;
 }
 
 export interface IUserService {
   createUser(data: CreateUserDTO): Promise<User>;
-  updateUser(id: number, data: UpdateUserDTO): Promise<User>;
-  getUserById(id: number): Promise<User>;
-  deleteUser(id: number): Promise<void>;
+  updateUser(userid: string, data: UpdateUserDTO): Promise<User>;
+  getUserByUserId(userid: string): Promise<User>;
+  getUserByPhoneNumber(phoneNumber: string): Promise<User>;
+  deleteUser(userid: string): Promise<void>;
+  deactivateUser(userid: string): Promise<void>;
 }

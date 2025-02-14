@@ -1,5 +1,18 @@
 import { Router } from 'express';
 import userRoutes from './userRoutes';
+import userTypeRoutes from './userTypeRoutes';
+import userProfileRoutes from './userProfileRoutes';
+import userPinRoutes from './userPinRoutes';
+import userPinHistoryRoutes from './userPinHistoryRoutes';
+import verificationCodeRoutes from './verificationCodeRoutes';
+import contactUsRoutes from './contactUsRoutes';
+import stickerTypeRoutes from './stickerTypeRoutes';
+import stickerRoutes from './stickerRoutes';
+import stickerPropertyRoutes from './stickerPropertyRoutes';
+import stickerMapRoutes from './stickerMapRoutes';
+import stickerUserRoutes from './stickerUserRoutes';
+import stickerScheduleRoutes from './stickerScheduleRoutes';
+
 import { logger } from '../utils/logger';
 
 const router = Router();
@@ -14,6 +27,19 @@ const API_PREFIX = '/api/v1';
 
 // Register routes
 router.use(`${API_PREFIX}/users`, userRoutes);
+router.use(`${API_PREFIX}/userTypes`, userTypeRoutes);
+router.use(`${API_PREFIX}/userProfile`, userProfileRoutes);
+router.use(`${API_PREFIX}/userPin`, userPinRoutes);
+router.use(`${API_PREFIX}/userPinHistory`, userPinHistoryRoutes);
+router.use(`${API_PREFIX}/verificationCode`, verificationCodeRoutes);
+router.use(`${API_PREFIX}/contactUs`, contactUsRoutes);
+router.use(`${API_PREFIX}/stickerType`, stickerTypeRoutes);
+router.use(`${API_PREFIX}/stickers`, stickerRoutes);
+router.use(`${API_PREFIX}/stickerProperty`, stickerPropertyRoutes);
+router.use(`${API_PREFIX}/stickerMap`, stickerMapRoutes);
+router.use(`${API_PREFIX}/stickerUser`, stickerUserRoutes);
+router.use(`${API_PREFIX}/stickerSchedule`, stickerScheduleRoutes);
+
 
 // 404 handler for undefined routes
 router.use('*', (req, res) => {

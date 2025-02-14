@@ -16,6 +16,10 @@ export class StickerPropertyRepository implements IStickerPropertyRepository {
     return this.repository.findOneBy({ id });
   }
 
+  async findByStickerId(stickerId: string): Promise<StickerProperty | null> {
+    return this.repository.findOneBy({ stickerId });
+  }
+
   async findByPin(stickerPin: string): Promise<StickerProperty | null> {
     return this.repository.findOneBy({ stickerPin });
   }
